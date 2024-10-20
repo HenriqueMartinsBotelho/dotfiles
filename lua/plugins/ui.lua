@@ -1,15 +1,9 @@
 return {
   --theme
   {
-    "edmondburnett/leeward.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-        theme = "dark",
-    },
+    "wurli/cobalt.nvim",
     config = function()
-        require("leeward").setup()
-        require("leeward").load()
+        vim.cmd[[colorscheme cobalt]]
     end
 },
       -- messages, cmdline and the popupmenu    

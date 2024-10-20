@@ -30,6 +30,16 @@ vim.opt.scrolloff = 10 -- Keeps 10 lines of context above and below the cursor w
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+-- Mapeamento para salvar com Ctrl + S no modo normal
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+
+-- Mapeamento para salvar com Ctrl + S no modo de inserção
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+
+-- Mapeamento para salvar com Ctrl + S no modo visual
+vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
+
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
