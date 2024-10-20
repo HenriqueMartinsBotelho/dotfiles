@@ -7,8 +7,8 @@ vim.opt.relativenumber = true -- Enables relative line numbers for easier naviga
 vim.opt.mouse = 'a' -- Enables mouse support in all modes
 vim.opt.showmode = false -- Disables showing the mode (useful when a statusline plugin is used)
 vim.opt.clipboard = 'unnamedplus' -- Allows access to the system clipboard
-vim.g.loaded_netrw = 1 -- Disables the default netrw file explorer
-vim.g.loaded_netrwPlugin = 1 -- Disables the netrw plugin to avoid conflicts with other file explorers
+-- vim.g.loaded_netrw = 1 -- Disables the default netrw file explorer
+-- vim.g.loaded_netrwPlugin = 1 -- Disables the netrw plugin to avoid conflicts with other file explorers
 vim.opt.tabstop = 2 -- Sets the number of spaces that a tab counts for
 vim.opt.shiftwidth = 2 -- Sets the number of spaces used for indentation
 vim.opt.expandtab = true -- Converts tabs to spaces
@@ -28,6 +28,8 @@ vim.opt.inccommand = 'split' -- Shows incremental live preview of search and rep
 vim.opt.cursorline = true -- Highlights the current line for better visibility
 vim.opt.scrolloff = 10 -- Keeps 10 lines of context above and below the cursor while scrolling
 
+vim.opt.swapfile = false -- Disables the use of swap files
+vim.opt.backup = false -- Disables the use of backup files
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Mapeamento para salvar com Ctrl + S no modo normal
@@ -38,6 +40,10 @@ vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
 
 -- Mapeamento para salvar com Ctrl + S no modo visual
 vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
+
+
+--open netrw
+vim.keymap.set('n', '<C-b>', ':Explore<CR>', { desc = 'Toggle NvimTree' })
 
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -160,7 +166,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   require('plugins.autopairs'),
   require('plugins.editing'),
-  require('plugins.file-explorer'),
   require('plugins.autocomplete'),
   require('plugins.git'),
   require('plugins.lint'),
