@@ -36,14 +36,20 @@ vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,te
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 
 -- Mapeamento para salvar com Ctrl + S no modo de inserção
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 
 -- Mapeamento para salvar com Ctrl + S no modo visual
 vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
 
 
 --open netrw
-vim.keymap.set('n', '<C-b>', ':Explore<CR>', { desc = 'Toggle NvimTree' })
+vim.keymap.set("n", "<C-b>", function()
+  if vim.bo.filetype == "netrw" then
+    vim.cmd("bd")  -- Fecha o netrw se estiver aberto
+  else
+    vim.cmd("Explore")  -- Abre o netrw se não estiver aberto
+  end
+end, { desc = "Toggle File Explorer" })
 
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
