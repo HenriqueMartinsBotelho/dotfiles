@@ -19,7 +19,7 @@ vim.opt.ignorecase = true -- Ignores case in search patterns
 vim.opt.smartcase = true -- Overrides `ignorecase` if the search pattern contains uppercase characters
 vim.opt.signcolumn = 'yes' -- Always shows the sign column to avoid shifting text
 vim.opt.updatetime = 250 -- Reduces the time for swap file updates and cursor hold
-vim.opt.timeoutlen = 300 -- Sets the time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 1000 -- Sets the time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.splitright = true -- Opens vertical splits to the right of the current window
 vim.opt.splitbelow = true -- Opens horizontal splits below the current window
 vim.opt.list = true -- Shows hidden characters (like tabs and spaces)
@@ -112,6 +112,16 @@ vim.keymap.set('n', '<leader>qn', ':cnext<CR>', { desc = 'Next Quickfix Entry' }
 vim.keymap.set('n', '<leader>qp', ':cprex<CR>', { desc = 'Previous Quickfix Entry' })
 --make a shortcut to clear the quickfix
 
+-- Send file to my other computer
+local function call_python_script_with_filepath()
+  local filepath = vim.fn.expand('%:p') -- Get the full path of the current file
+  local python_script = "~/dev/net/client.py"
+  local command = string.format("python3 %s 192.168.100.6 %s", python_script, filepath)
+  vim.fn.system(command)
+end
+
+vim.keymap.set('n', '<leader>rp', call_python_script_with_filepath, { noremap = true, silent = false })
+
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -164,7 +174,8 @@ require('lazy').setup({
   require('plugins.lsp'),
   require('plugins.search'),
   require('plugins.treesister'),
-  require('plugins.session')
+  require('plugins.session'),
+  require('plugins.autocomplete')
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font, defina icons como uma tabela vazia para usar os ícones padrão
