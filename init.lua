@@ -1,14 +1,14 @@
-vim.g.mapleader = ' '             -- Sets the global leader key to space
-vim.g.maplocalleader = ' '        -- Sets the local leader key to space
-vim.g.have_nerd_font = true       -- Enables the use of Nerd Fonts for icons in the UI
-vim.opt.termguicolors = true      -- Enables true color support in the terminal
-vim.opt.number = true             -- Enables line numbers
-vim.opt.relativenumber = true     -- Enables relative line numbers for easier navigation
-vim.opt.mouse = ''                -- Enables mouse support in all modes
-vim.opt.showmode = false          -- Disables showing the mode (useful when a statusline plugin is used)
+vim.g.mapleader = ' ' -- Sets the global leader key to space
+vim.g.maplocalleader = ' ' -- Sets the local leader key to space
+vim.g.have_nerd_font = true -- Enables the use of Nerd Fonts for icons in the UI
+vim.opt.termguicolors = true -- Enables true color support in the terminal
+vim.opt.number = true -- Enables line numbers
+vim.opt.relativenumber = true -- Enables relative line numbers for easier navigation
+vim.opt.mouse = '' -- Enables mouse support in all modes
+vim.opt.showmode = false -- Disables showing the mode (useful when a statusline plugin is used)
 vim.opt.clipboard = 'unnamedplus' -- Allows access to the system clipboard
--- vim.g.loaded_netrw = 1 -- Disables the default netrw file explorer
--- vim.g.loaded_netrwPlugin = 1 -- Disables the netrw plugin to avoid conflicts with other file explorers
+vim.g.loaded_netrw = 1 -- Disables the default netrw file explorer
+vim.g.loaded_netrwPlugin = 1 -- Disables the netrw plugin to avoid conflicts with other file explorers
 vim.opt.tabstop = 2 -- Sets the number of spaces that a tab counts for
 vim.opt.shiftwidth = 2 -- Sets the number of spaces used for indentation
 vim.opt.expandtab = true -- Converts tabs to spaces
@@ -97,11 +97,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>', { desc = 'Go to previous tab' })
 vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = 'Go to next tab' })
 
---fzf
-vim.keymap.set('n', '<leader>ff', ':Files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>fg', ':Files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>fb', ':Buffer<CR>', { silent = true })
-
 --ripgrep
 vim.keymap.set('n', '<leader>ft', ':Rg!', { silent = true })
 
@@ -174,8 +169,9 @@ require('lazy').setup({
   require('plugins.lsp'),
   require('plugins.search'),
   require('plugins.treesister'),
-  require('plugins.session'),
-  require('plugins.autocomplete')
+  require('plugins.autocomplete'),
+  require('plugins.nvimtree'),
+  require('plugins.multicursor')
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font, defina icons como uma tabela vazia para usar os ícones padrão
