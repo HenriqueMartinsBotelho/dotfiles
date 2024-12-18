@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Ester } from "@/components/esteregg/ester";
 
 export const metadata: Metadata = {
-  title: "Portfolio di Andrea De Laurentis",
-  description: "Portfolio di Andrea De Laurentis",
+  title: "NextNvim",
+  description: "The Next NeoVim Distro",
 };
 
 import "./globals.css";
@@ -18,7 +17,6 @@ export default function RootLayout({
         <div id="app" className="min-h-[100dvh]">
           {children}
         </div>
-        <Ester />
       </body>
     </html>
   );

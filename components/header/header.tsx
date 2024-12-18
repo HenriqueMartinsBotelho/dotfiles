@@ -16,7 +16,6 @@ import {
 
 import Link from "next/link";
 
-
 export const Header = () => {
   const {
     isOpen: isOpenClosePage,
@@ -24,58 +23,9 @@ export const Header = () => {
     onOpenChange: onOpenChangeClosePage,
   } = useDisclosure();
 
-  const [isEsterEgg, setIsEsterEgg] = useState(false);
-
-  function esterEgg() {
-    const app = document.querySelector("#app");
-    const body = document.querySelector("body");
-    const ester = document.querySelector("#ester");
-    if (!isEsterEgg) {
-      setIsEsterEgg(true);
-      app?.classList.toggle("app-hide");
-      body?.classList.toggle("overflow-hidden");
-      ester?.classList.remove("hidden");
-    } else {
-      setIsEsterEgg(false);
-      app?.classList.toggle("app-hide");
-      setTimeout(() => {
-        body?.classList.toggle("overflow-hidden");
-        ester?.classList.add("hidden");
-      }, 300);
-    }
-  }
-
   return (
-    <header className="flex flex-row justify-between items-center p-2 px-4 h-[35px] bg-[var(--background)] border-b border-[var(--border)]">
-      <div className="w-[52px] h-[20px]">
-        <Link href="/">
-          <LogoIcon fill="var(--primary)" className="h-full" />
-        </Link>
-      </div>
-      <p className="text-xs text-primary">Andrea De Laurentis - Portfolio</p>
+    <header className="flex flex-row justify-between items-center p-2 px-4 hidden h-[10px] border-b border-[var(--border)]">
       <div className="h-full flex items-center gap-2">
-        <button
-          className="bg-yellow-500 size-3 rounded-full cursor-pointer"
-          onClick={() => esterEgg()}
-        />
-
-        {/* Modale per fullscreen */}
-        <button
-          className="bg-green-500 size-3 rounded-full cursor-pointer"
-          onClick={() => {
-            if (!document.fullscreenElement) {
-              document.documentElement.requestFullscreen();
-            } else {
-              document.exitFullscreen();
-            }
-          }}
-        />
-
-        {/* Modale per """chiudere""" il progetto */}
-        <button
-          className="bg-red-500 size-3 rounded-full cursor-pointer"
-          onClick={onOpenClosePage}
-        />
         <Modal
           isOpen={isOpenClosePage}
           onOpenChange={onOpenChangeClosePage}
