@@ -23,7 +23,7 @@ const LinkMenuIcon = [
     href: "/",
     icon: Files,
     label: "Esplora risorse",
-    filename: "index.html",
+    filename: "Introduction",
     iconFile: <FaHtml5 className="text-[#e65100]" />,
   },
   {
